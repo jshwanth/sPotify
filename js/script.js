@@ -12,27 +12,14 @@ function convertMinutesToMMSS(seconds) {
 
 async function getSongs(folder) {
     currfolder = folder;
-    let a = await fetch(encodeURI(`${folder}/`));
-    let response = await a.text();
 
-    let div = document.createElement("div");
-    div.innerHTML = response;
-    let as = div.getElementsByTagName("a");
-    songs = [];
-
-    for (let i = 0; i < as.length; i++) {
-        const element = as[i];
-        if (element.href.endsWith(".mp3")) {
-            const parts = decodeURI(element.href).split(`${folder}/`);
-            const track = parts[1];
-            if (track) songs.push(track);
-        }
-    }
-
-    console.log("Parsed songs from folder:", songs);
+    // Load track list from info.json
+    let info = await fetch(`/${folder}/info.json`).then(res => res.json());
+    songs = info.tracks;
 
     let songul = document.querySelector(".songlist ul");
     songul.innerHTML = "";
+
     for (const song of songs) {
         songul.innerHTML += `
             <li>
@@ -54,6 +41,7 @@ async function getSongs(folder) {
     return songs;
 }
 
+
 const playmusic = (track, pause = false) => {
     currentsong.src = `/${currfolder}/` + encodeURIComponent(track);
     if (!pause) {
@@ -65,35 +53,16 @@ const playmusic = (track, pause = false) => {
 };
 
 async function displayalbums() {
-    let a = await fetch("/songs/");
-    let html = await a.text();
-    let div = document.createElement("div");
-    div.innerHTML = html;
+    // Fetch the list of folders from index.json
+    const folders = await fetch("/songs/index.json").then(res => res.json());
 
-    let anchors = div.getElementsByTagName("a");
-    let cardContainer = document.querySelector(".cardContainer");
+    const cardContainer = document.querySelector(".cardContainer");
 
-    let folders = Array.from(anchors).filter(e => {
-        let href = e.getAttribute("href");
-        return (
-            href &&
-            !href.includes(".") &&
-            href !== "/" &&
-            !href.includes("..") &&
-            href !== "/songs" &&
-            !href.endsWith("/songs")
-        );
-    });
-
-    for (let e of folders) {
-        let href = e.getAttribute("href");
-        let folder = decodeURIComponent(href.split("/").filter(Boolean).pop());
-
+    for (let folder of folders) {
         try {
-            let infoResponse = await fetch(`/songs/${folder}/info.json`);
-            let info = await infoResponse.json();
+            const info = await fetch(`/songs/${folder}/info.json`).then(res => res.json());
 
-            let card = document.createElement("div");
+            const card = document.createElement("div");
             card.className = "card";
             card.setAttribute("data-folder", folder);
             card.innerHTML = `
@@ -110,10 +79,11 @@ async function displayalbums() {
 
             cardContainer.appendChild(card);
         } catch (err) {
-            console.error(`Could not load: /songs/${folder}/info.json`, err);
+            console.error(`Failed to load /songs/${folder}/info.json`, err);
         }
     }
 }
+
 
 async function main() {
     await displayalbums();
