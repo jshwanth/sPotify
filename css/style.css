@@ -91,10 +91,12 @@ body {
   font-size: 15px;
   cursor: pointer;
   border: 2px solid white;
-  .language:hover {
-    font-size: 15px;
-  }
 }
+
+.rounded-box:hover .language {
+  font-size: 15px;
+}
+
 
 /* CSS for Card Container */
 .cardContainer {

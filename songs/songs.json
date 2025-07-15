@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Blinding Lights",
+    "artist": "The Weeknd",
+    "filename": "Blinding Lights - The Weeknd.mp3",
+    "cover": "songs/ncs/cover.jpg",
+    "description": "Top hit from The Weeknd",
+    "folder": "ncs"
+  },
+  {
+    "title": "Blank Space",
+    "artist": "Taylor Swift",
+    "filename": "Blank Space - Taylor Swift.mp3",
+    "cover": "songs/ncs/cover.jpg",
+    "description": "A Taylor Swift classic",
+    "folder": "ncs"
+  },
+  {
+    "title": "Lovely",
+    "artist": "Billie Eilish ft. Khalid",
+    "filename": "Lovely - ft.Khalid.mp3",
+    "cover": "songs/English songs/cover.jpg",
+    "description": "Emotional collab track",
+    "folder": "English songs"
+  }
+]

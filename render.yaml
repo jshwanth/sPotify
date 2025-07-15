@@ -1,0 +1,8 @@
+services:
+  - type: static
+    name: spotify-clone
+    env: static
+    buildCommand: ""   # No build needed
+    staticPublishPath: .
+    branch: main       # Or your branch name
+    autoDeploy: true

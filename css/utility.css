@@ -1,31 +1,42 @@
-.border{
-    border: 2px solid blue;
-    margin: 3px;
+/* utility.css */
+.border {
+  border: 2px solid blue;
+  margin: 3px;
 }
-.flex{
-    display:flex;
+.flex {
+  display: flex;
 }
-.justify-center{
-    justify-content: center;
+.justify-center {
+  justify-content: center;
 }
-.items-center{
-    align-items: center;
+.items-center {
+  align-items: center;
 }
-
-.bg_black{
-    background-color: black;
-    color: white;
+.bg_black {
+  background-color: black;
+  color: white;
 }
-.invert{
-    filter: invert(1);
+.invert {
+  filter: invert(1);
 }
-
-.bg_grey{
-    background-color: #121212;
+.bg_grey {
+  background-color: #121212;
 }
-.rounded{
-    border-radius: 7px;
+.rounded {
+  border-radius: 7px;
 }
-.m1{
-    margin: 5px;
+.m1 {
+  margin: 5px;
+}
+.text-center {
+  text-align: center;
+}
+.text-white {
+  color: white;
+}
+.font-bold {
+  font-weight: bold;
+}
+.shadow {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }

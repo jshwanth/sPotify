@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="css/utility.css" />
     <link rel="icon" href="favicon1.ico" />
     <title>Spotify - Web Player: Music for everyone</title>
+    <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+/>
+
   </head>
 
   <body>
@@ -19,7 +24,7 @@
           <img width="100px" class="invert" src="img/logo.svg" alt="" />
           <ul>
             <li><img class="invert" src="img/home.svg" alt="Home" />Home</li>
-            <li><img class="invert" src="img/search.svg" alt="Search" />Search</li>
+<li><i class="fas fa-search"></i> Search</li>
           </ul>
         </div>
         <div class="library bg_grey rounded m1 p1">
@@ -97,7 +102,8 @@
                   <div class="volume">
                     <img width="30" src="img/volume.svg" alt="" />
                     <div class="range">
-                      <input type="range" name="volume" id="" />
+                      <label for="volume-range" class="sr-only">Volume</label>
+                      <input type="range" name="volume" id="volume-range" title="Adjust volume" />
                     </div>
                   </div>
                 </div>
